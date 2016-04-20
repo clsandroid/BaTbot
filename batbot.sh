@@ -103,7 +103,7 @@ while true; do
 			MSGID=${BASH_REMATCH[1]};
 		fi
 
-		if [[ "$line" =~ \"text\"\:\"(.+)\"\}\} ]]; then
+		if [[ "$line" =~ \"text\"\:\"(.+)\"\,\"ent ]]; then
 			TEXT=${BASH_REMATCH[1]};
 		fi
 
