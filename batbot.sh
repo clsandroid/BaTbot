@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # BaTbot current version
@@ -94,7 +95,7 @@ while true; do
 	TEXT=0;
 	FIRSTNAME="";
 	LASTNAME="";
-	echo "${MSGOUTPUT}" | while read -r line ; do
+	echo -e "${MSGOUTPUT}" | while read -r line ; do
 		if [[ "$line" =~ \"chat\"\:\{\"id\"\:([\-0-9]+)\, ]]; then
 			CHATID=${BASH_REMATCH[1]};
 		fi
