@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # BaTbot current version
-VERSION="1.4"
+VERSION="1.4.1"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
@@ -127,7 +127,8 @@ while true; do
 		if [[ $MSGID -ne 0 && $CHATID -ne 0 ]]; then
 			LASTMSGID=$(cat "${BOTID}.lastmsg");
 			if [[ $MSGID -gt $LASTMSGID ]]; then
-				echo "[chat ${CHATID}, from ${FROMID}] <${USERNAME} - ${FIRSTNAME} ${LASTNAME}> ${TEXT}";
+				FIRSTNAMEUTF8=$(echo -e "$FIRSTNAME");
+				echo "[chat ${CHATID}, from ${FROMID}] <${USERNAME} - ${FIRSTNAMEUTF8} ${LASTNAME}> ${TEXT}";
 				echo $MSGID > "${BOTID}.lastmsg";
 
 				for s in "${!botcommands[@]}"; do
@@ -135,7 +136,7 @@ while true; do
 						CMDORIG=${botcommands["$s"]};
 						CMDORIG=${CMDORIG//@USERID/$FROMID};
 						CMDORIG=${CMDORIG//@USERNAME/$USERNAME};
-						CMDORIG=${CMDORIG//@FIRSTNAME/$FIRSTNAME};
+						CMDORIG=${CMDORIG//@FIRSTNAME/$FIRSTNAMEUTF8};
 						CMDORIG=${CMDORIG//@LASTNAME/$LASTNAME};
 						CMDORIG=${CMDORIG//@CHATID/$CHATID};
 						CMDORIG=${CMDORIG//@MSGID/$MSGID};
