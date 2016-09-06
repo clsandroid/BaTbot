@@ -1,10 +1,8 @@
-# BaTbot v1.3 - Bash Telegram Bot
+# BaTbot v1.4 - Bash Telegram Bot
 
 batbot.sh is a simple Telegram Bot written in Bash
 that can reply to user messages, execute commands, 
 and others cool features.
-
-<img src="https://waf.blue/img/bat.gif" width="100" />
 
 ## Index
 - [Usage](#usage)
@@ -93,7 +91,6 @@ Regex group extract
 @R2 		Content of second group (.*)
 @R3 		Content of third group (.*)
 ```
-![screenshot](https://waf.blue/img/batbot_sc1.jpg)
 
 ### Command with regex
 You can also configure a command with arguments, 
@@ -108,7 +105,6 @@ regular expressions, For example:
 
 	["/host ([a-zA-Z0-9\.\-]+)"]="/usr/bin/host @R1"
 ```
-![screenshot](https://waf.blue/img/batbot_sc2.jpg)
 
 ## Send message
 When BaTbot is running, you can send message to chat id, by use the command **.msg** directly on console.
@@ -117,7 +113,6 @@ For example:
 [chat 110440209, from  110440209] <theMiddle - Andrea Menin> hi bot :)
 .msg 110440209 hey!!!
 ```
-![screenshot](https://waf.blue/img/batbot_sc3.png)
 
 ## TODO
 - 2016-04-20 `[high  ]` ~~Fix text message parsing on API2.0~~ (thanks to **rauhmaru**)

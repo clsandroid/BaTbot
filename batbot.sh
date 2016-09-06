@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # BaTbot current version
-VERSION="1.2"
+VERSION="1.4"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
