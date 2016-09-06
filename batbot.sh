@@ -62,11 +62,11 @@ echo -e "\nInitializing BaTbot v${VERSION}"
 ABOUTME=`curl -s "https://api.telegram.org/bot${TELEGRAMTOKEN}/getMe"`
 if [[ "$ABOUTME" =~ \"ok\"\:true\, ]]; then
 	if [[ "$ABOUTME" =~ \"username\"\:\"([^\"]+)\" ]]; then
-		echo "Username: ${BASH_REMATCH[1]}";
+		echo -e "Username: ${BASH_REMATCH[1]}";
 	fi
 
 	if [[ "$ABOUTME" =~ \"first_name\"\:\"([^\"]+)\" ]]; then
-		echo "First name: ${BASH_REMATCH[1]}";
+		echo -e "First name: ${BASH_REMATCH[1]}";
 	fi
 
 	if [[ "$ABOUTME" =~ \"id\"\:([0-9\-]+), ]]; then
