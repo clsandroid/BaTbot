@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # BaTbot current version
-VERSION="1.4.1"
+VERSION="1.4.2"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
@@ -15,16 +15,17 @@ CHECKNEWMSG=5;
 # Commands
 # you have to use this exactly syntax: ["/mycommand"]='<system command>'
 # please, don't forget to remove all example commands!
+
 declare -A botcommands
 botcommands=(
+
+	["/hello"]='echo Hi @FIRSTNAME, pleased to meet you :)'
 
 	["/myid"]='echo Your user id is: @USERID'
 
 	["/myuser"]='echo Your username is: @USERNAME'
 
 	["/ping ([a-zA-Z0-9]+)"]='echo Pong: @R1'
-
-	["/hello"]='echo Hi @FIRSTNAME, pleased to meet you :)'
 
 	["/uptime"]="uptime"
 
@@ -104,8 +105,9 @@ while true; do
 			MSGID=${BASH_REMATCH[1]};
 		fi
 
-		if [[ "$line" =~ \"text\"\:\"(.+)\"\,\"ent ]]; then
+		if [[ "$line" =~ \"text\"\:\"([^\"]+)\" ]]; then
 			TEXT=${BASH_REMATCH[1]};
+			LASTLINERCVD=${line};
 		fi
 
 		if [[ "$line" =~ \"username\"\:\"([^\"]+)\" ]]; then
@@ -121,7 +123,7 @@ while true; do
 		fi
 
 		if [[ "$line" =~ \"from\"\:\{\"id\"\:([0-9\-]+), ]]; then
-			FROMID=" ${BASH_REMATCH[1]}";
+			FROMID="${BASH_REMATCH[1]}";
 		fi
 
 
@@ -129,7 +131,7 @@ while true; do
 			LASTMSGID=$(cat "${BOTID}.lastmsg");
 			if [[ $MSGID -gt $LASTMSGID ]]; then
 				FIRSTNAMEUTF8=$(echo -e "$FIRSTNAME");
-				echo "[chat ${CHATID}, from ${FROMID}] <${USERNAME} - ${FIRSTNAMEUTF8} ${LASTNAME}> ${TEXT}";
+				echo "[chat ${CHATID}][from ${FROMID}] <${USERNAME} - ${FIRSTNAMEUTF8} ${LASTNAME}> ${TEXT}";
 				echo $MSGID > "${BOTID}.lastmsg";
 
 				for s in "${!botcommands[@]}"; do
@@ -147,7 +149,7 @@ while true; do
 						CMDORIG=${CMDORIG//@R2/${BASH_REMATCH[2]}};
 						CMDORIG=${CMDORIG//@R3/${BASH_REMATCH[3]}};
 
-						echo "Command ${s} received, running cmd: ${CMDORIG}"
+						echo "Command ${s} received (id:${MSGID} last:${$LASTMSGID}), running cmd: ${CMDORIG}"
 						CMDOUTPUT=`$CMDORIG`;
 
 						if [ $FIRSTTIME -eq 1 ]; then

@@ -1,8 +1,15 @@
-# BaTbot v1.4.1 - Bash Telegram Bot
+# BaTbot v1.4.2 - Bash Telegram Bot
 
 batbot.sh is a simple Telegram Bot written in Bash
 that can reply to user messages, execute commands, 
 and others cool features.
+
+## CHANGELOG
+**v1.4.2**
+- fixed text messages parser regex
+
+**v1.4.1**
+- fixed UTF-8 characters in username
 
 ## Index
 - [Usage](#usage)
