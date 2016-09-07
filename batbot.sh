@@ -19,7 +19,7 @@ CHECKNEWMSG=5;
 declare -A botcommands
 botcommands=(
 
-	["/hello"]='echo Hi @FIRSTNAME, pleased to meet you :)'
+	["/start"]='echo "Hi @FIRSTNAME, pleased to meet you :) I am SiWAFbot, type /help for a complete list of commands."'
 
 	["/myid"]='echo Your user id is: @USERID'
 
@@ -149,7 +149,7 @@ while true; do
 						CMDORIG=${CMDORIG//@R2/${BASH_REMATCH[2]}};
 						CMDORIG=${CMDORIG//@R3/${BASH_REMATCH[3]}};
 
-						echo "Command ${s} received (id:${MSGID} last:${$LASTMSGID}), running cmd: ${CMDORIG}"
+						echo "Command ${s} received, running cmd: ${CMDORIG}"
 						CMDOUTPUT=`$CMDORIG`;
 
 						if [ $FIRSTTIME -eq 1 ]; then
