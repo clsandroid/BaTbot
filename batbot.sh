@@ -19,7 +19,7 @@ CHECKNEWMSG=5;
 declare -A botcommands
 botcommands=(
 
-	["/start"]='echo "Hi @FIRSTNAME, pleased to meet you :) I am SiWAFbot, type /help for a complete list of commands."'
+	["/start"]='echo "Hi @FIRSTNAME, pleased to meet you :)"'
 
 	["/myid"]='echo Your user id is: @USERID'
 
