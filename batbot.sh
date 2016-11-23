@@ -2,11 +2,11 @@
 #!/bin/bash
 
 # BaTbot current version
-VERSION="1.4.2"
+VERSION="1.4.3"
 
 # default token and chatid
 # or run BaTbot with option: -t <token>
-TELEGRAMTOKEN="<Your Bot Token>";
+TELEGRAMTOKEN="<your telegram token>";
 
 # how many seconds between check for new messages
 # or run Batbot with option: -c <seconds>
@@ -135,7 +135,7 @@ while true; do
 				echo $MSGID > "${BOTID}.lastmsg";
 
 				for s in "${!botcommands[@]}"; do
-					if [[ "$TEXT" =~ \\${s} ]]; then
+					if [[ "$TEXT" =~ ${s} ]]; then
 						CMDORIG=${botcommands["$s"]};
 						CMDORIG=${CMDORIG//@USERID/$FROMID};
 						CMDORIG=${CMDORIG//@USERNAME/$USERNAME};
